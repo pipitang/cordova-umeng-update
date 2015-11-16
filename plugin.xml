@@ -19,7 +19,7 @@
     
     <!-- js module-->
     <js-module src="www/umeng.update.js" name="Update">
-        <clobbers target="Umeng" />
+        <merges target="Umeng" />
     </js-module>
 
     <!-- ios -->
