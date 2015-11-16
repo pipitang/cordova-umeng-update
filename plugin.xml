@@ -4,7 +4,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-umeng-update"
-    version="0.0.2">
+    version="0.0.4">
 
     <name>Umeng Update Plugin</name>
     <description>A cordova plugin, a JS version for Umeng Update SDK</description>
@@ -73,6 +73,40 @@
 
         <source-file src="src/android/Update.java" target-dir="src/org/apache/cordova/umeng" />
         <source-file src="src/android/libs/umeng-update-v2.6.0.1.jar" target-dir="libs" />
-        <source-file src="src/android/libs/armeabi/libbspatch.so" target-dir="libs/armeabi/" />
+        
+        <source-file src="src/android/res/drawable/tb_munion_icon.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/tb_munion_item_selector.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_common_gradient_orange.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_common_gradient_red.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_cancel_bg_focused.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_cancel_bg_normal.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_cancel_bg_selector.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_cancel_bg_tap.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_check_selector.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_close_bg_selector.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_ok_bg_focused.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_ok_bg_normal.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_ok_bg_selector.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_button_ok_bg_tap.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_dialog_bg.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_title_bg.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/umeng_update_wifi_disable.png" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_off_focused_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_off_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_off_pressed_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_on_focused_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_on_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_btn_check_on_pressed_holo_light.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_close_bg_normal.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi/umeng_update_close_bg_tap.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/layout/tb_munion_aditem.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout/umeng_common_download_notification.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout/umeng_update_dialog.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout-v9/umeng_common_download_notification.xml" target-dir="res/layout-v9" />
+        <source-file src="src/android/res/values/tb_munion_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/res/values/umeng_common_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/res/values/umeng_update_string.xml" target-dir="res/values" />
+        <source-file src="src/android/res/values-zh/umeng_common_strings.xml" target-dir="res/values-zh" />
+        <source-file src="src/android/res/values-zh/umeng_update_string.xml" target-dir="res/values-zh" />
     </platform>
 </plugin>

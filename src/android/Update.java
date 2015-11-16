@@ -9,7 +9,9 @@ import com.umeng.update.UpdateConfig;
 import com.umeng.update.UpdateStatus;
 
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,21 +21,8 @@ public class Update extends CordovaPlugin {
 
     private static final String TAG = "cordova-umeng-update";
 
-    @Override
-    public void onPause(boolean multitasking) {
-        super.onPause(multitasking);
-        MobclickAgent.onPause(cordova.getActivity());
-    }
-
-    @Override
-    public void onResume(boolean multitasking) {
-        super.onResume(multitasking);
-        MobclickAgent.onResume(cordova.getActivity());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        UmengUpdateAgent.setUpdateCheckConfig(false);
     }
 
     @Override
