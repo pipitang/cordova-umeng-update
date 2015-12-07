@@ -19,32 +19,31 @@
     NSString *title = [desc objectForKey:@"title"];
     NSString *ok = [desc objectForKey:@"ok"];
     NSString *cancel = [desc objectForKey:@"cancel"];
-    
-    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-    
-    NSString *nowVersion = [infoDict objectForKey:@"CFBundleVersion"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", storeAppId]];
-    NSString * file =  [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    NSLog(@"Got response %@", file);
-    
-    NSRange substr = [file rangeOfString:@"\"version\":\""];
-    NSRange range1 = NSMakeRange(substr.location+substr.length,10);
-    NSRange substr2 =[file rangeOfString:@"\"" options:0 range:range1];
-    NSRange range2 = NSMakeRange(substr.location+substr.length, substr2.location-substr.location-substr.length);
-    NSString *newVersion =[file substringWithRange:range2];
-    
-    NSLog(@"Versions %@ (old) v.s %@ (new) ", nowVersion, newVersion);
-    
-    if(![nowVersion isEqualToString:newVersion])
-    {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *nowVersion = [infoDict objectForKey:@"CFBundleVersion"];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", storeAppId]];
+        NSString * file =  [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:title
-                delegate:self cancelButtonTitle:cancel otherButtonTitles: ok,nil];
-        [alert show];
-    }
+        NSError *error = nil;
+        NSDictionary* result = [NSJSONSerialization JSONObjectWithData:[file dataUsingEncoding:NSUTF8StringEncoding]  options:NSJSONReadingAllowFragments error: &error];
+        NSArray* results = [result valueForKey:@"results"];
+        if ([results lastObject ] != nil) {
+            NSString *newVersion = [[results lastObject] valueForKey:@"version"];
+            NSLog(@"Versions %@ (old) v.s %@ (new) ", nowVersion, newVersion);
+            
+            if(![nowVersion isEqualToString:newVersion])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:title
+                                                               delegate:self cancelButtonTitle:cancel otherButtonTitles: ok,nil];
+                [alert show];
+            }
 
-    [self successWithCallbackID:command.callbackId];
+        }
+        [self successWithCallbackID:command.callbackId];
+    });
+
+
 }
 
 
