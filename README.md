@@ -1,3 +1,7 @@
+# WARN
+
+***本项目已经于2015年开始不再维护***
+
 # cordova-umeng-upate
 
 Cordova友盟动更新插件
